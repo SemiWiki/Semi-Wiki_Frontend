@@ -18,7 +18,11 @@ import pen from "../../assets/pen.svg";
 
 function Board({ searchTerm }) {
   const [activeFilter, setActiveFilter] = useState("최신순");
-  const [currentPage, setCurrentPage] = useState(localStorage.getItem("currentPage") ? Number(localStorage.getItem("currentPage")) : 1);
+  const [currentPage, setCurrentPage] = useState(
+    localStorage.getItem("currentPage")
+      ? Number(localStorage.getItem("currentPage"))
+      : 1
+  );
   const [totalPages, setTotalPages] = useState(1);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,7 +49,7 @@ function Board({ searchTerm }) {
       try {
         const query = new URLSearchParams();
         if (selectedCategories.length > 0)
-          query.append("categories", selectedCategories[0]); 
+          query.append("categories", selectedCategories[0]);
         console.log("카테고리", selectedCategories);
         if (searchTerm) query.append("keyword", searchTerm);
 

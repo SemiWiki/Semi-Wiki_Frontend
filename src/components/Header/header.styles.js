@@ -53,4 +53,8 @@ export const H2 = styled.p`
   font-size: 31px;
   font-weight: 500;
   color: ${colors_dark.orange[200]};
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

@@ -16,7 +16,6 @@ export const MenuContainer = styled.div`
   height: 600px;
   margin-top: 40px;
   margin-right: 1000px;
-  z-index: 100;
 
   color: ${colors_dark.gray[100]};
 `;
@@ -26,6 +25,7 @@ export const MainMenu = styled.div`
   height: 100%;
   padding: 20px 0;
   box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 2;
   background-color: ${colors_dark.gray[650]};
 `;
 
@@ -99,7 +99,7 @@ export const SubMenu = styled.div`
   gap: 15px;
   width: 150px;
   height: 100%;
-  z-index: -1;
+  z-index: ${({ isClick }) => (isClick ? 1 : -1)};
 
   box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25), 4px 0 4px rgba(0, 0, 0, 0.25),
     0px 4px 4px rgba(0, 0, 0, 0.25);

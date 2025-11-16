@@ -23,7 +23,7 @@ export const Member = styled.div`
   flex-direction: column;
   margin: 0 20px;
 `;
-export const P = styled.p`
+export const P = styled.a`
   color: ${colors_dark.gray[50]};
   font-size: 17px;
   margin: 5px 0;

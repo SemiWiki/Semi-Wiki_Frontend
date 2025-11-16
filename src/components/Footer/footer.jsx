@@ -9,22 +9,52 @@ const Footer = () => {
       <Div>
         <Member>
           <P>Frontend</P>
-          <P>전재준</P>
-          <P>이진서</P>
-          <P>장윤호</P>
+          <P
+            href="https://github.com/JAEJUN090210"
+            target="_blank"
+            rel="noreferrer"
+          >
+            전재준
+          </P>
+          <P href="https://github.com/jsl0118" target="_blank" rel="noreferrer">
+            이진서
+          </P>
+          <P href="https://github.com/yunho09" target="_blank" rel="noreferrer">
+            장윤호
+          </P>
         </Member>
         <Member>
           <P>Backend</P>
-          <P>이한샘</P>
-          <P>남우현</P>
+          <P
+            href="https://github.com/yellowstarr0323"
+            target="_blank"
+            rel="noreferrer"
+          >
+            이한샘
+          </P>
+          <P
+            href="https://github.com/cowtree28"
+            target="_blank"
+            rel="noreferrer"
+          >
+            남우현
+          </P>
         </Member>
         <Member>
           <P>Android</P>
-          <P>안세하</P>
+          <P href="https://github.com/ashxom" target="_blank" rel="noreferrer">
+            안세하{" "}
+          </P>
         </Member>
         <Member>
           <P>Design</P>
-          <P>정일웅</P>
+          <P
+            href="https://github.com/wjddlfdnd"
+            target="_blank"
+            rel="noreferrer"
+          >
+            정일웅
+          </P>
         </Member>
       </Div>
       <Div style={{ alignItems: "center", marginTop: "55px" }}>

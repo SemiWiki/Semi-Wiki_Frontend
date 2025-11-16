@@ -86,6 +86,7 @@ function MyBoard() {
     <>
       <GlobalStyle />
       <Content>
+        <Menu />
         <BoardContainer>
           <BoardTitle>내가 작성한 게시글</BoardTitle>
 
