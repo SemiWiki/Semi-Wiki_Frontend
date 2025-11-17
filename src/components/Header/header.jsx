@@ -35,9 +35,14 @@ function Header({ onSearch }) {
     }
   }
 
+  function handleLogoClick() {
+    window.location.reload();
+    window.location.href = "/";
+  }
+
   return (
     <Container>
-      <LinkBox as={Link} to={"/"}>
+      <LinkBox onClick={handleLogoClick}>
         <img src={logo} alt="Logo" style={{ width: "231px", height: "72px" }} />
       </LinkBox>
 
@@ -54,7 +59,11 @@ function Header({ onSearch }) {
             type="text"
             placeholder="검색어를 입력하세요"
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              setInputValue(value);
+              onSearch(value);
+            }}
             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           />
         </SearchBox>
