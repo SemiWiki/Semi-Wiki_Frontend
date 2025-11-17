@@ -27,6 +27,14 @@ export const P = styled.a`
   color: ${colors_dark.gray[50]};
   font-size: 17px;
   margin: 5px 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: ${colors_dark.gray[200]};
+  }
 `;
 export const Img = styled.img`
   margin: 0 10px;

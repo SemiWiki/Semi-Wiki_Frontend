@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 4px;
-  padding: 0 130px;
+  padding: 0 160px;
   height: 88px;
 `;
 export const Div = styled.div`
@@ -57,4 +57,6 @@ export const H2 = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 2;
+  margin-bottom: 4px;
 `;

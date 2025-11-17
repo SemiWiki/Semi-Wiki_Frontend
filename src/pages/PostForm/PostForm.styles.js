@@ -50,7 +50,7 @@ export const TitleInput = styled.input`
   font-family: "Pretendard";
 
   &::placeholder {
-    color: white;
+    color: ${colors_dark.gray[350]};
     font-size: 40px;
     font-weight: 500;
     font-family: "Pretendard";
@@ -84,7 +84,7 @@ export const CategoryInput = styled.div`
   border: 1px solid ${colors_dark.gray[350]};
   border-radius: 24px;
 
-  color: ${colors_dark.gray[100]};
+  color: ${colors_dark.gray[250]};
   font-size: 20px;
   font-family: "Pretendard";
 

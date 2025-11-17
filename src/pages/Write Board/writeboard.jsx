@@ -104,6 +104,7 @@ function MyBoard() {
               </Boardfilertitle>
             ))}
           </Boardfiler>
+          <Line />
 
           <BoardList
             sort={activeFilter}
