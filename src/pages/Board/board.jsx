@@ -78,7 +78,7 @@ function Board({ searchTerm }) {
     };
 
     fetchTotalCount();
-  }, [token, selectedCategories, searchTerm, API_BASE]);
+  }, [token, selectedCategories, searchTerm, API_BASE, pageSize]);
 
   const navigate = useNavigate();
 

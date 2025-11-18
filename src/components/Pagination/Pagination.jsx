@@ -36,10 +36,13 @@ function Pagination({ currentPage, totalPages, onPageChange, groupSize = 10 }) {
 
   return (
     <PaginationContainer>
-      <ArrowButton onClick={goPrevGroup} disabled={!canGoPrev}>
-        <img src={PrevIcon} />
-      </ArrowButton>
+      {canGoPrev && (
+        <ArrowButton onClick={goPrevGroup} disabled={!canGoPrev}>
+          <img src={PrevIcon} />
+        </ArrowButton>
+      )}
       {pages.map((p) => {
+        if (p > groupEnd) return null;
         const isdisabled = p > safeTotal;
         const isActive = p === currentPage;
 
@@ -54,9 +57,11 @@ function Pagination({ currentPage, totalPages, onPageChange, groupSize = 10 }) {
           </PageButton>
         );
       })}
-      <ArrowButton onClick={goNextGroup} disabled={!canGoNext}>
-        <img src={NextIcon} />
-      </ArrowButton>
+      {canGoNext && (
+        <ArrowButton onClick={goNextGroup} disabled={!canGoNext}>
+          <img src={NextIcon} />
+        </ArrowButton>
+      )}
     </PaginationContainer>
   );
 }
