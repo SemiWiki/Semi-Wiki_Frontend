@@ -80,8 +80,6 @@ function PostDetail() {
   };
 
   useEffect(() => {
-    if (!token) return;
-
     const fetchPost = async () => {
       try {
         const res = await fetch(`${API_BASE}/notice-board/${postId}`, {

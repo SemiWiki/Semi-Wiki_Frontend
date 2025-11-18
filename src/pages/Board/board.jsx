@@ -43,8 +43,6 @@ function Board({ searchTerm }) {
   };
 
   useEffect(() => {
-    if (!token) return;
-
     const fetchTotalCount = async () => {
       try {
         const query = new URLSearchParams();

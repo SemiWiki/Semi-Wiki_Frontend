@@ -22,8 +22,6 @@ function BoardList({
   const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE_URL;
 
   useEffect(() => {
-    if (!token) return;
-
     const fetchList = async () => {
       try {
         const query = new URLSearchParams();
