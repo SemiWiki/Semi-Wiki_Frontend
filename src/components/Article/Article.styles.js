@@ -128,10 +128,23 @@ export const GlobalViewerStyle = createGlobalStyle`
     margin-bottom: 5px !important;
   }
 
+  /* 코드 블록 */
+  .toastui-editor-contents pre {
+    background: rgba(255,255,255,0.1) !important;
+  }
+
+  /* 인라인 코드 */
+  .toastui-editor-contents code {
+    background: rgba(255,255,255,0.1) !important;
+    padding: 2px 4px !important;
+    border-radius: 4px !important;
+    font-size: 0.95rem !important;
+  }
+
   /* 테이블 */
   .toastui-editor-contents table {
     width: auto !important;
-    margin: 4rem -6rem !important;
+
   }
   .toastui-editor-contents th,
   .toastui-editor-contents td {
@@ -152,8 +165,8 @@ export const GlobalViewerStyle = createGlobalStyle`
   }
 
   /* 체크리스트 */
-  .toastui-editor-contents {
-    margin-right: 0.5rem !important;
+  .toastui-editor-contents li.task-list-item {
+    margin-left: -1.2rem !important;
     pointer-events: none !important;
   }
 
@@ -167,4 +180,9 @@ export const GlobalViewerStyle = createGlobalStyle`
   .toastui-editor-contents del {
     text-decoration: line-through !important;
   }
+  .toastui-editor-contents a {
+    color: #1e90ff;
+    text-decoration: underline;
+  }
+
 `;
