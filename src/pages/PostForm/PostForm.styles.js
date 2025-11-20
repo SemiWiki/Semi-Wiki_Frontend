@@ -43,13 +43,14 @@ export const TitleInput = styled.input`
 
   background-color: transparent;
   border: none;
-  color: white;
+  color: ${colors_dark.gray[100]};
 
   font-size: 40px;
   font-weight: 500;
   font-family: "Pretendard";
 
   &::placeholder {
+    color: ${colors_dark.gray[350]};
     color: ${colors_dark.gray[350]};
     font-size: 40px;
     font-weight: 500;
@@ -84,7 +85,7 @@ export const CategoryInput = styled.div`
   border: 1px solid ${colors_dark.gray[350]};
   border-radius: 24px;
 
-  color: ${colors_dark.gray[250]};
+  color: ${colors_dark.gray[350]};
   font-size: 20px;
   font-family: "Pretendard";
 
@@ -135,7 +136,7 @@ export const GlobalEditorStyle = createGlobalStyle`
   .toastui-editor-contents h5,
   .toastui-editor-contents h6,
   .toastui-editor-contents p {
-    color: ${colors_dark.gray[350]} !important;
+    color: ${colors_dark.gray[100]} !important;
     font-family: "Pretendard";
 
     margin: 0;

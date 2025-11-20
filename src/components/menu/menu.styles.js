@@ -41,7 +41,7 @@ export const TitleBox = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-family: "Pretendard, sans-serif";
+  font-family: "Pretendard";
   font-weight: 500;
   font-size: 38px;
 `;
@@ -55,14 +55,14 @@ export const Catagory = styled.div`
 
 export const CatagoryTitle = styled.div`
   margin-bottom: 12px;
-  font-family: "Pretendard, sans-serif";
+  font-family: "Pretendard";
   font-size: 30px;
   font-weight: 500;
 `;
 
 export const CatagoryItem = styled.div`
   font-size: 20px;
-  font-family: "Pretendard, sans-serif";
+  font-family: "Pretendard";
   font-weight: 500;
   margin-bottom: 8px;
   cursor: pointer;
@@ -78,14 +78,14 @@ export const Service = styled.div`
 
 export const ServiceTitle = styled.div`
   margin-bottom: 12px;
-  font-family: "Pretendard, sans-serif";
+  font-family: "Pretendard";
   font-size: 30px;
   font-weight: 500;
 `;
 
 export const ServiceItem = styled.div`
   font-size: 20px;
-  font-family: "Pretendard, sans-serif";
+  font-family: "Pretendard";
   font-weight: 500;
   margin-bottom: 8px;
   cursor: pointer;
@@ -110,12 +110,12 @@ export const SubMenu = styled.div`
   visibility: ${({ isClick }) => (isClick ? `visible` : `hidden`)};
   transform: ${({ isClick }) =>
     isClick ? `translateX(0%)` : `translateX(-100%)`};
-  transition: transform 1s ease-in;
+  transition: transform 0.5s ease-in;
 `;
 
 export const SubCatagoryItem = styled.div`
   margin-bottom: 12px;
-  font-family: "Pretendard, sans-serif";
+  font-family: "Pretendard";
   font-size: 20px;
   font-weight: 400;
   cursor: pointer;

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { href, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   GlobalMenuStyle,
   MenuContainer,
@@ -20,6 +20,7 @@ function Menu({ isMenuOpen, toggleMenu, handleCategoryToggle }) {
   const [item, setItem] = useState([]);
   const navigate = useNavigate();
   const accountId = localStorage.getItem("accountId");
+  const menuRef = useRef(null);
   const categoryMap = {
     전공: [
       "프론트엔드",
@@ -46,10 +47,25 @@ function Menu({ isMenuOpen, toggleMenu, handleCategoryToggle }) {
     setItem(categoryMap[category]);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(e.target)
+      ) {
+        toggleMenu(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [isMenuOpen, toggleMenu]);
+
   return (
     <>
       <GlobalMenuStyle />
-      <MenuContainer>
+      <MenuContainer ref={menuRef}>
         <MainMenu
           style={{
             borderRadius: isMenuOpen ? "24px 0 0 24px" : "24px",

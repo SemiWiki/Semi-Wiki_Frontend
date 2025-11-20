@@ -39,7 +39,7 @@ export const Title = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 500;
 `;
 
@@ -53,7 +53,7 @@ export const Categories = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 500;
 `;
 
@@ -75,6 +75,7 @@ export const Modifier = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 500;
+  line-height: 36px;
 `;
