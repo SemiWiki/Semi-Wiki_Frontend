@@ -12,7 +12,8 @@ export const BoardItemContainer = styled.div`
 
   background: ${colors_dark.gray[650]};
   border-style: solid;
-  border-color: ${colors_dark.gray[450]};
+  border-color: ${colors_dark
+    .gray[450]};
   border-radius: 0px;
 
   border-width: 0px 0px 1px 0px;
@@ -27,8 +28,6 @@ export const LinkStyle = styled(Link)`
   flex: 2;
   font-size: 24px;
   color: ${colors_dark.orange[200]};
-  /* padding-left: 12px; */
-
   overflow: hidden;
   text-overflow: ellipsis;
 `;
@@ -49,7 +48,7 @@ export const Categories = styled.div`
   margin-left: 10px;
   display: flex;
   gap: 2px;
-  cursor: pointer;
+  cursor: default;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -60,7 +59,8 @@ export const Categories = styled.div`
 // 게시판 카테고리 태그
 export const CategoryTag = styled.span`
   padding: 7px 5px;
-  border: 1px solid ${colors_dark.gray[100]};
+  border: 1px solid
+    ${colors_dark.gray[100]};
   border-radius: 8px;
   font-size: 24px;
   color: ${colors_dark.gray[100]};
@@ -71,7 +71,7 @@ export const Modifier = styled.div`
   flex: 2;
   color: ${colors_dark.orange[100]};
   font-size: 24px;
-  cursor: pointer;
+  cursor: default;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

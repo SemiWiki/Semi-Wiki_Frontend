@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect,
+} from "react";
 import {
   BoardListContainer,
   BoardListTitle,
@@ -8,6 +11,7 @@ import {
   Line,
 } from "./boardList.styles";
 import BoardItem from "../../components/boardItem/boardItem.jsx";
+import { colors_dark } from "../../styles/color_table.js";
 
 function BoardList({
   sort,
@@ -18,20 +22,41 @@ function BoardList({
   searchTerm = "",
   accountId,
 }) {
-  const [items, setItems] = useState([]);
-  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE_URL;
+  const [items, setItems] = useState(
+    []
+  );
+  const API_BASE = import.meta.env
+    .VITE_REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     const fetchList = async () => {
       try {
-        const query = new URLSearchParams();
+        const query =
+          new URLSearchParams();
 
-        if (selectedCategories.length > 0)
-          query.append("categories", selectedCategories[0]);
-        if (searchTerm) query.append("keyword", searchTerm);
+        if (
+          selectedCategories.length > 0
+        )
+          query.append(
+            "categories",
+            selectedCategories[0]
+          );
+        if (searchTerm)
+          query.append(
+            "keyword",
+            searchTerm
+          );
 
-        query.append("orderBy", sort === "최신순" ? "recent" : "like");
-        query.append("offset", page - 1);
+        query.append(
+          "orderBy",
+          sort === "최신순"
+            ? "recent"
+            : "like"
+        );
+        query.append(
+          "offset",
+          page - 1
+        );
         query.append("limit", pageSize);
 
         const url = accountId
@@ -39,14 +64,21 @@ function BoardList({
           : `${API_BASE}/notice-board/list?${query.toString()}`;
 
         const res = await fetch(url, {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
 
         if (!res.ok) {
           if (res.status === 401) {
-            alert("로그인이 필요합니다.");
-            localStorage.removeItem("accessToken");
-            window.location.href = "/login";
+            alert(
+              "로그인이 필요합니다."
+            );
+            localStorage.removeItem(
+              "accessToken"
+            );
+            window.location.href =
+              "/login";
             return;
           }
           setItems([]);
@@ -54,7 +86,12 @@ function BoardList({
         }
 
         const data = await res.json();
-        setItems(Array.isArray(data) ? data : data.posts || []);
+
+        setItems(
+          Array.isArray(data)
+            ? data
+            : []
+        );
       } catch (err) {
         console.error(err);
         setItems([]);
@@ -76,21 +113,48 @@ function BoardList({
   return (
     <BoardListContainer>
       <BoardListHeader>
-        <BoardListTitle>제목</BoardListTitle>
-        <BoardListCategory>카테고리</BoardListCategory>
-        <BoardListModifier>수정자</BoardListModifier>
+        <BoardListTitle>
+          제목
+        </BoardListTitle>
+        <BoardListCategory>
+          카테고리
+        </BoardListCategory>
+        <BoardListModifier>
+          수정자
+        </BoardListModifier>
       </BoardListHeader>
       <Line />
-      {items.map((post) => (
-        <BoardItem
-          key={post.id}
-          id={post.id}
-          title={post.title}
-          categories={post.categories}
-          modifier={post.userPreview?.accountId || "알 수 없음"}
-          $check={post.checked}
-        />
-      ))}
+
+      {items.length === 0 ? (
+        <p
+          style={{
+            fontSize: "35px",
+            color:
+              colors_dark.gray[200],
+            fontFamily: "Pretendard",
+            fontWeight: "500",
+            textAlign: "center",
+            marginTop: "200px",
+          }}
+        >
+          게시글이 없습니다.
+        </p>
+      ) : (
+        items.map((post) => (
+          <BoardItem
+            key={post.id}
+            id={post.id}
+            title={post.title}
+            categories={post.categories}
+            modifier={
+              post.userPreview
+                ?.accountId ||
+              "알 수 없음"
+            }
+            $check={post.checked}
+          />
+        ))
+      )}
     </BoardListContainer>
   );
 }

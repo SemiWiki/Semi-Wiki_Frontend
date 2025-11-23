@@ -15,10 +15,11 @@ export const Modify = styled.div`
   padding: 15.5px 12px;
 
   width: 56px;
-  height: 63px;
+  height: 60px;
 
   background: ${colors_dark.gray[650]};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px
+    rgba(0, 0, 0, 0.25);
   border-radius: 12px;
 
   cursor: pointer;
@@ -39,7 +40,8 @@ export const LoveLabel = styled.label`
   height: 60px;
 
   background: ${colors_dark.gray[650]};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px
+    rgba(0, 0, 0, 0.25);
   border-radius: 12px;
 
   img {
@@ -78,7 +80,8 @@ export const Topcontainer = styled.div`
   height: auto;
 
   background: ${colors_dark.gray[650]};
-  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 4px
+    rgba(0, 0, 0, 0.2);
   border-radius: 12px;
 `;
 
@@ -139,7 +142,8 @@ export const Categories = styled.div`
 //카테코리 태그
 export const CategoryTag = styled.span`
   padding: 10px 7px;
-  border: 1px solid ${colors_dark.gray[100]};
+  border: 1px solid
+    ${colors_dark.gray[100]};
   border-radius: 8px;
   font-size: 18px;
   color: ${colors_dark.gray[100]};
@@ -164,7 +168,8 @@ export const TableOfContentscontainer = styled.div`
   bottom: 180px;
 
   background: ${colors_dark.gray[650]};
-  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 4px
+    rgba(0, 0, 0, 0.2);
   border-radius: 12px;
 `;
 
@@ -199,7 +204,8 @@ export const Contentcontainer = styled.div`
   font-weight: 600;
 
   background: ${colors_dark.gray[650]};
-  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 4px
+    rgba(0, 0, 0, 0.2);
   border-radius: 12px;
 `;
 
