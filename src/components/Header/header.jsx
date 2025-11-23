@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Container,
   Div,
@@ -14,11 +14,13 @@ import user from "../../assets/user.svg";
 import searchIcon from "../../assets/search_icon.png";
 
 function Header({ onSearch }) {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState(""); // 내부 입력 상태
   const accountId = localStorage.getItem("accountId");
 
   const handleSearch = () => {
-    onSearch(inputValue); // 상위(App)의 상태 업데이트
+    onSearch(inputValue);
+    navigate(`/`);
   };
 
   function handlePageChange() {
