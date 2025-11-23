@@ -36,6 +36,7 @@ function PostEditForm() {
   const editorRef = useRef();
   const token = localStorage.getItem("accessToken");
   const navigate = useNavigate();
+  const CONTAINS_FORBIDDEN_CHARS_REGEX = /[~!@#$%^&*()_+|<>?:{}\s]/;
 
   useEffect(() => {
     if (!token) return;
@@ -150,6 +151,18 @@ function PostEditForm() {
       navigate("/login");
       return;
     }
+    if (CONTAINS_FORBIDDEN_CHARS_REGEX.test(title)) {
+      alert("제목에 특수문자 또는 공백이 포함되어 있습니다.");
+      return;
+    }
+    if (selectedCategories.length === 0) {
+      alert("카테고리를 선택해주세요.");
+      return;
+    }
+    if (!markdownContent) {
+      alert("본문을 입력해주세요.");
+      return;
+    }
     setLoading(true);
     setError("");
 
@@ -183,27 +196,15 @@ function PostEditForm() {
       if (!response.ok) {
         switch (response.status) {
           case 400:
-            if (!title || selectedCategories.length === 0 || !markdownContent) {
-              if (!title) throw new Error("제목을 입력하세요.");
-              else if (selectedCategories.length === 0)
-                throw new Error("카테고리를 입력하세요.");
-              else if (!markdownContent) throw new Error("본문을 입력하세요.");
-            }
-            throw new Error("입력 정보를 다시 확인해 주세요.");
+            throw new Error(
+              "요청 정보가 잘못되었습니다. 입력 내용을 확인해 주세요."
+            );
           case 401:
             localStorage.removeItem("accessToken");
             alert("로그인이 필요합니다.");
             window.location.href = "/login";
-          case 403:
-            throw new Error("게시글을 수정할 권한이 없습니다.");
           case 404:
             throw new Error("수정하려는 게시글을 찾을 수 없습니다.");
-          case 405:
-            throw new Error("잘못된 접근입니다. 다시 시도해 주세요.");
-          case 409:
-            throw new Error(
-              "이미 수정되었거나, 동시 수정 요청이 발생한 게시물입니다."
-            );
           case 500:
             throw new Error(
               "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요."

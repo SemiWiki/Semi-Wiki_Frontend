@@ -22,7 +22,6 @@ import {
   Categories,
   CategoryTag,
 } from "./PostForm.styles";
-import colors from "../../styles/color";
 
 function PostForm() {
   const [title, setTitle] = useState("");
@@ -35,6 +34,7 @@ function PostForm() {
   const navigate = useNavigate();
   const token = localStorage.getItem("accessToken");
   const accountId = localStorage.getItem("accountId");
+  const CONTAINS_FORBIDDEN_CHARS_REGEX = /[~!@#$%^&*()_+|<>?:{}\s]/;
 
   // 체크박스 변경 핸들러
   const handleCheckboxChange = useCallback(
@@ -95,6 +95,10 @@ function PostForm() {
       navigate("/login");
       return;
     }
+    if (CONTAINS_FORBIDDEN_CHARS_REGEX.test(title)) {
+      alert("제목에 특수문자 또는 공백이 포함되어 있습니다.");
+      return;
+    }
     setLoading(true);
     setError("");
 
@@ -121,31 +125,33 @@ function PostForm() {
         }
       );
 
+      const responseData = await response.json();
+      const responseMessage = responseData.message;
+
       if (!response.ok) {
         switch (response.status) {
           case 400:
-            if (!title || selectedCategories.length === 0 || !markdownBody) {
-              if (!title) throw new Error("제목을 입력하세요.");
-              else if (selectedCategories.length === 0)
-                throw new Error("카테고리를 입력하세요.");
-              else if (!markdownBody) throw new Error("본문을 입력하세요.");
-            }
-            throw new Error("입력 정보를 다시 확인해 주세요.");
+            if (responseMessage == "no title")
+              throw new Error("제목을 입력해주세요.");
+            if (responseMessage == "duplicate title")
+              throw new Error(
+                "동일한 제목의 게시글이 이미 존재합니다. 다른 제목으로 수정해 주세요."
+              );
+            if (responseMessage == "there's no category")
+              throw new Error("카테고리를 선택해주세요.");
+            if (responseMessage == "over run category")
+              throw new Error("카테고리는 3개까지만 선택할 수 있습니다.");
+            if (responseMessage == "no header")
+              throw new Error("헤더를 입력해주세요.");
+            throw new Error(
+              "요청 정보가 잘못되었습니다. 입력 내용을 확인해 주세요."
+            );
           case 401:
             localStorage.removeItem("accessToken");
             alert("로그인이 필요합니다.");
             window.location.href = "/login";
-            return;
-          case 403:
-            throw new Error("게시글을 작성할 권한이 없습니다.");
           case 404:
-            throw new Error("페이지를 찾을 수 없습니다.");
-          case 409:
-            throw new Error(
-              "이미 생성되었거나, 동시 생성 요청이 발생한 게시물입니다."
-            );
-          case 429:
-            throw new Error("잠시 후 다시 시도해 주세요.");
+            throw new Error("요청하신 페이지를 찾을 수 없습니다.");
           case 500:
             throw new Error(
               "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요."

@@ -18,6 +18,7 @@ import {
 
 function Menu({ isMenuOpen, toggleMenu, handleCategoryToggle }) {
   const [item, setItem] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(null);
   const navigate = useNavigate();
   const accountId = localStorage.getItem("accountId");
   const menuRef = useRef(null);
@@ -43,8 +44,12 @@ function Menu({ isMenuOpen, toggleMenu, handleCategoryToggle }) {
   };
 
   const handleCategoryClick = (category) => {
-    toggleMenu();
+    if (activeCategory == category && isMenuOpen) toggleMenu(false);
     setItem(categoryMap[category]);
+    setActiveCategory(category);
+    if (!isMenuOpen) {
+      toggleMenu(true);
+    }
   };
 
   useEffect(() => {
@@ -61,6 +66,20 @@ function Menu({ isMenuOpen, toggleMenu, handleCategoryToggle }) {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isMenuOpen, toggleMenu]);
+
+  function handlePageChange() {
+    if (localStorage.getItem("accountId")) {
+      if (confirm("로그아웃 하시겠습니까?")) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("accountId");
+        document.cookie = "accessTokenNumber=; expires=0; path=/";
+        window.location.href = "/";
+      }
+    } else {
+      window.location.href = "/login";
+    }
+  }
 
   return (
     <>
@@ -94,6 +113,7 @@ function Menu({ isMenuOpen, toggleMenu, handleCategoryToggle }) {
               새 게시글 작성
             </ServiceItem>
             <ServiceItem onClick={link}>문의하기</ServiceItem>
+            <ServiceItem onClick={handlePageChange}>로그아웃</ServiceItem>
           </Service>
         </MainMenu>
         <SubMenu isClick={isMenuOpen}>

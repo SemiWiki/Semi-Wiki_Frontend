@@ -13,7 +13,7 @@ export const MenuContainer = styled.div`
   position: absolute;
   display: flex;
   width: 400px;
-  height: 600px;
+  height: 630px;
   margin-top: 40px;
   margin-right: 1000px;
 
@@ -25,7 +25,7 @@ export const MainMenu = styled.div`
   height: 100%;
   padding: 20px 0;
   box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
-  z-index: 2;
+  z-index: 5;
   background-color: ${colors_dark.gray[650]};
 `;
 
@@ -37,7 +37,7 @@ export const TitleBox = styled.div`
   margin-bottom: 30px;
   border-bottom: 4px solid ${colors_dark.orange[200]};
 
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 `;
 
 export const Title = styled.h1`
@@ -71,7 +71,7 @@ export const CatagoryItem = styled.div`
 export const Service = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 55px;
+  margin-top: 45px;
   padding-left: 20px;
   gap: 20px;
 `;
@@ -99,7 +99,7 @@ export const SubMenu = styled.div`
   gap: 15px;
   width: 150px;
   height: 100%;
-  z-index: ${({ isClick }) => (isClick ? 1 : -1)};
+  z-index: ${({ isClick }) => (isClick ? 2 : -1)};
 
   box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25), 4px 0 4px rgba(0, 0, 0, 0.25),
     0px 4px 4px rgba(0, 0, 0, 0.25);

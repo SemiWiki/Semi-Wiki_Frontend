@@ -23,20 +23,6 @@ function Header({ onSearch }) {
     navigate(`/`);
   };
 
-  function handlePageChange() {
-    if (localStorage.getItem("accountId")) {
-      if (confirm("로그아웃 하시겠습니까?")) {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        localStorage.removeItem("accountId");
-        document.cookie = "accessTokenNumber=; expires=0; path=/";
-        window.location.href = "/";
-      }
-    } else {
-      window.location.href = "/login";
-    }
-  }
-
   function handleLogoClick() {
     window.location.reload();
     window.location.href = "/";
@@ -70,7 +56,7 @@ function Header({ onSearch }) {
           />
         </SearchBox>
 
-        <LinkBox onClick={handlePageChange}>
+        <LinkBox>
           <img
             src={user}
             alt="user"
