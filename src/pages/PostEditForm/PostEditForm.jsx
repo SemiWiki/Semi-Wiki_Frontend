@@ -159,10 +159,6 @@ function PostEditForm() {
       alert("카테고리를 선택해주세요.");
       return;
     }
-    if (!markdownContent) {
-      alert("본문을 입력해주세요.");
-      return;
-    }
     setLoading(true);
     setError("");
 
@@ -196,6 +192,18 @@ function PostEditForm() {
       if (!response.ok) {
         switch (response.status) {
           case 400:
+            if (responseMessage == "no title")
+              throw new Error("제목을 입력해주세요.");
+            if (responseMessage == "duplicate title")
+              throw new Error(
+                "동일한 제목의 게시글이 이미 존재합니다. 다른 제목으로 수정해 주세요."
+              );
+            if (responseMessage == "there's no category")
+              throw new Error("카테고리를 선택해주세요.");
+            if (responseMessage == "over run category")
+              throw new Error("카테고리는 3개까지만 선택할 수 있습니다.");
+            if (responseMessage == "no header")
+              throw new Error("헤더를 입력해주세요.");
             throw new Error(
               "요청 정보가 잘못되었습니다. 입력 내용을 확인해 주세요."
             );
