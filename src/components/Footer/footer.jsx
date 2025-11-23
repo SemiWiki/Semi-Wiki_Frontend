@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Div, Member, P, Img } from "./footer.styles";
+import { Container, Div, Member, P, A, Img } from "./footer.styles";
 import favicon from "../../assets/logo/logo_white.svg";
 import github from "../../assets/github.png";
 
@@ -9,52 +9,52 @@ const Footer = () => {
       <Div>
         <Member>
           <P>Frontend</P>
-          <P
+          <A
             href="https://github.com/JAEJUN090210"
             target="_blank"
             rel="noreferrer"
           >
             전재준
-          </P>
-          <P href="https://github.com/jsl0118" target="_blank" rel="noreferrer">
+          </A>
+          <A href="https://github.com/jsl0118" target="_blank" rel="noreferrer">
             이진서
-          </P>
-          <P href="https://github.com/yunho09" target="_blank" rel="noreferrer">
+          </A>
+          <A href="https://github.com/yunho09" target="_blank" rel="noreferrer">
             장윤호
-          </P>
+          </A>
         </Member>
         <Member>
           <P>Backend</P>
-          <P
+          <A
             href="https://github.com/yellowstarr0323"
             target="_blank"
             rel="noreferrer"
           >
             이한샘
-          </P>
-          <P
+          </A>
+          <A
             href="https://github.com/cowtree28"
             target="_blank"
             rel="noreferrer"
           >
             남우현
-          </P>
+          </A>
         </Member>
         <Member>
           <P>Android</P>
-          <P href="https://github.com/ashxom" target="_blank" rel="noreferrer">
+          <A href="https://github.com/ashxom" target="_blank" rel="noreferrer">
             안세하{" "}
-          </P>
+          </A>
         </Member>
         <Member>
           <P>Design</P>
-          <P
+          <A
             href="https://github.com/wjddlfdnd"
             target="_blank"
             rel="noreferrer"
           >
             정일웅
-          </P>
+          </A>
         </Member>
       </Div>
       <Div style={{ alignItems: "center", marginTop: "55px" }}>

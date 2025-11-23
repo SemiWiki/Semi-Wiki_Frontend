@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/reset.css";
 import {
@@ -21,6 +21,7 @@ function MyBoard() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const pageSize = 10;
   const token = localStorage.getItem("accessToken");
@@ -34,14 +35,13 @@ function MyBoard() {
     navigate(`/mypage/${accountId}/list`);
   };
 
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen((prev) => !prev);
+  }, []);
+
   const handleCategoryToggle = (category) => {
-    setSelectedCategories((prev) => {
-      const newCategories = prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category];
-      setCurrentPage(1);
-      return newCategories;
-    });
+    setSelectedCategories([category]);
+    setCurrentPage(1);
   };
 
   useEffect(() => {
@@ -86,7 +86,11 @@ function MyBoard() {
     <>
       <GlobalStyle />
       <Content>
-        <Menu />
+        <Menu
+          isMenuOpen={isMenuOpen}
+          toggleMenu={toggleMenu}
+          handleCategoryToggle={handleCategoryToggle}
+        />
         <BoardContainer>
           <BoardTitle>내가 작성한 게시글</BoardTitle>
 

@@ -13,17 +13,26 @@ export const Container = styled.div`
   height: 220px;
   box-shadow: 0 0 8px ${colors_dark.gray[500]};
 `;
+
 export const Div = styled.div`
   display: flex;
   justify-content: center;
   margin: 130px;
 `;
+
 export const Member = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 20px;
 `;
-export const P = styled.a`
+
+export const P = styled.p`
+  color: ${colors_dark.gray[50]};
+  font-size: 17px;
+  margin: 5px 0;
+`;
+
+export const A = styled.a`
   color: ${colors_dark.gray[50]};
   font-size: 17px;
   margin: 5px 0;
@@ -36,6 +45,7 @@ export const P = styled.a`
     color: ${colors_dark.gray[200]};
   }
 `;
+
 export const Img = styled.img`
   margin: 0 10px;
 `;

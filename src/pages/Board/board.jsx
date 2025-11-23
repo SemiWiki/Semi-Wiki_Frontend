@@ -32,6 +32,7 @@ function Board({ searchTerm }) {
   const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE_URL;
 
   localStorage.setItem("currentPage", currentPage);
+
   const toggleMenu = useCallback(() => {
     setIsMenuOpen((prev) => !prev);
   }, []);

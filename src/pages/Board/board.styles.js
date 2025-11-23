@@ -20,9 +20,6 @@ export const BoardContainer = styled.div`
   background: ${colors_dark.gray[650]};
   box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 24px;
-
-  filter: ${({ isMenuOpen }) => (isMenuOpen ? `blur(2px)` : `none`)};
-  transition: filter 1s ease-out;
 `;
 
 // 게시판 제목
@@ -84,7 +81,7 @@ export const Boardfilertitle = styled.h2`
   &::after {
     content: "";
     background-color: ${({ $active }) =>
-    $active ? colors_dark.orange[200] : "transparent"};
+      $active ? colors_dark.orange[200] : "transparent"};
 
     position: absolute;
     width: 83px;
@@ -93,7 +90,7 @@ export const Boardfilertitle = styled.h2`
     bottom: -9px;
 
     border-radius: 30px;
-    z-index: 10;
+    z-index: 1;
   }
 `;
 
