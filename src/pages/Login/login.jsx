@@ -8,6 +8,7 @@ import EyeOpenIcon from "../../assets/eyes_open.svg";
 import RedIcon from "../../assets/signup_error.png";
 import UserIcon from "../../assets/account.svg";
 import LockIcon from "../../assets/password.svg";
+import { showAlerts } from "../../alert";
 
 import {
   Container,
@@ -74,6 +75,10 @@ function Login() {
     setError("");
 
     try {
+      localStorage.clear();
+      document.cookie =
+        "accessTokenNumber=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
+
       const response = await fetch(
         `${import.meta.env.VITE_REACT_APP_API_BASE_URL}/auth/signin`,
         {
@@ -138,6 +143,7 @@ function Login() {
         throw new Error("localStorage 저장 중 오류가 발생했습니다.");
       }
 
+      showAlerts();
       navigate("/");
     } catch (err) {
       console.error("로그인 에러:", err);
