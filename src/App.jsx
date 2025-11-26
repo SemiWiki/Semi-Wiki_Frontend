@@ -10,6 +10,7 @@ import PostEditForm from "./pages/PostEditForm/PostEditForm.jsx";
 import MyBoard from "./pages/Write Board/writeboard.jsx";
 import { createGlobalStyle } from "styled-components";
 import { GlobalEditorStyle } from "./pages/PostForm/PostForm.styles.js";
+import { showAlerts } from "./alert.jsx";
 import {
   startTokenAutoReissue,
   stopTokenAutoReissue,
@@ -36,6 +37,12 @@ function App() {
     return () => {
       stopTokenAutoReissue();
     };
+  }, []);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("viewedAlerts")) {
+      showAlerts();
+    }
   }, []);
 
   useEffect(() => {
