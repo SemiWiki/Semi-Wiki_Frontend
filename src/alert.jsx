@@ -100,6 +100,7 @@ function createAlertPopup(title, message, type = "normal", onClose) {
           font-size: 18px; 
           line-height: 1.5; 
           min-height: 300px;
+          white-space: pre-line;
         "
       >
         ${message}
