@@ -70,10 +70,10 @@ function Menu({ isMenuOpen, toggleMenu, handleCategoryToggle }) {
   function handlePageChange() {
     if (localStorage.getItem("accountId")) {
       if (confirm("로그아웃 하시겠습니까?")) {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        localStorage.removeItem("accountId");
-        document.cookie = "accessTokenNumber=; expires=0; path=/";
+        // 로컬스토리지 전체 삭제
+        localStorage.clear();
+        document.cookie =
+          "accessTokenNumber=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
         window.location.href = "/";
       }
     } else {
