@@ -19,9 +19,7 @@ import pen from "../../assets/pen.svg";
 function Board({ searchTerm }) {
   const [activeFilter, setActiveFilter] = useState("최신순");
   const [currentPage, setCurrentPage] = useState(
-    localStorage.getItem("currentPage")
-      ? Number(localStorage.getItem("currentPage"))
-      : 1
+    localStorage.getItem("currentPage") ? Number(localStorage.getItem("currentPage")) : 1
   );
   const [totalPages, setTotalPages] = useState(1);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -47,19 +45,15 @@ function Board({ searchTerm }) {
     const fetchTotalCount = async () => {
       try {
         const query = new URLSearchParams();
-        if (selectedCategories.length > 0)
-          query.append("categories", selectedCategories[0]);
+        if (selectedCategories.length > 0) query.append("categories", selectedCategories[0]);
         console.log("카테고리", selectedCategories);
         if (searchTerm) query.append("keyword", searchTerm);
 
-        const res = await fetch(
-          `${API_BASE}/notice-board/count?${query.toString()}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const res = await fetch(`${API_BASE}/notice-board/count?${query.toString()}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         if (res.status === 401) {
           alert("로그인이 필요합니다.");
@@ -85,11 +79,7 @@ function Board({ searchTerm }) {
     <>
       <GlobalStyle />
       <Content>
-        <Menu
-          isMenuOpen={isMenuOpen}
-          toggleMenu={toggleMenu}
-          handleCategoryToggle={handleCategoryToggle}
-        />
+        <Menu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} handleCategoryToggle={handleCategoryToggle} />
         <BoardContainer isMenuOpen={isMenuOpen}>
           <NewPostButton
             onClick={() => {
@@ -97,11 +87,7 @@ function Board({ searchTerm }) {
             }}
             style={{ cursor: "pointer" }}
           >
-            <img
-              src={pen}
-              style={{ width: "36px", height: "36px", marginRight: "10px" }}
-            />
-            새 게시글 작성
+            <img src={pen} style={{ width: "36px", height: "36px", marginRight: "10px" }} />새 게시글 작성
           </NewPostButton>
           <BoardTitle>게시판</BoardTitle>
 
@@ -128,14 +114,10 @@ function Board({ searchTerm }) {
             token={token}
             selectedCategories={selectedCategories}
             searchTerm={searchTerm}
+            setCurrentPage={setCurrentPage}
           />
 
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-            groupSize={10}
-          />
+          <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} groupSize={10} />
         </BoardContainer>
       </Content>
     </>
