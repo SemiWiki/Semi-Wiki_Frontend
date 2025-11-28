@@ -4,7 +4,7 @@ import { colors_dark } from "../../styles/color_table.js";
 // 카테고리 리스트 컨테이너
 export const CategoryListContainer = styled.div`
   width: 300px;
-  height: 463px;
+  height: 470px;
   padding: 20px;
 
   box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);

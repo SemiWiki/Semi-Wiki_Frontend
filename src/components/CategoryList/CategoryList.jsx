@@ -14,23 +14,27 @@ import {
 
 function CategoryList({ selectedCategories = [], onSelectedCategories }) {
   const categories = [
-    "게임",
+    "프론트엔드",
     "백엔드",
-    "IOS",
     "안드로이드",
+    "iOS",
+    "플러터",
     "임베디드",
-    "DevOps",
     "정보보안",
     "인공지능",
-    "프론트엔드",
     "디자인",
+    "게임",
+    "DevOps",
     "전공동아리",
     "창체동아리",
     "자율동아리",
-    "기숙사",
-    "학교",
     "DMS",
+    "학생",
+    "선생님",
     "기타",
+    "일반교과",
+    "전공교과",
+    "기숙사",
   ];
 
   const handleCategoryClick = (category) => {
@@ -57,7 +61,7 @@ function CategoryList({ selectedCategories = [], onSelectedCategories }) {
                 }}
               >
                 <HiddenCheckbox type="checkbox" checked={isChecked} readOnly />
-                <CategoryButton $check={isChecked} >{category}</CategoryButton>
+                <CategoryButton $check={isChecked}>{category}</CategoryButton>
                 {isChecked && <CategoryDeleteIcon src={x} />}
               </CheckboxLabel>
             );
