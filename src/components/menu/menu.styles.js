@@ -13,7 +13,7 @@ export const MenuContainer = styled.div`
   position: absolute;
   display: flex;
   width: 400px;
-  height: 630px;
+  height: 650px;
   margin-top: 40px;
   margin-right: 1000px;
 
@@ -110,7 +110,7 @@ export const SubMenu = styled.div`
   visibility: ${({ isClick }) => (isClick ? `visible` : `hidden`)};
   transform: ${({ isClick }) =>
     isClick ? `translateX(0%)` : `translateX(-100%)`};
-  transition: transform 0.2s ease-in;
+  transition: transform 0.2s ease-in, box-shadow 0.2s ease-in;
 `;
 
 export const SubCatagoryItem = styled.div`
