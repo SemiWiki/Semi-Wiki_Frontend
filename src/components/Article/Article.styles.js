@@ -117,15 +117,11 @@ export const GlobalViewerStyle = createGlobalStyle`
   }
 
   /* 리스트 */
-  .toastui-editor-contents ul,
   .toastui-editor-contents ol {
-    margin: 0.5rem 0 !important;
-    padding-left: 1.2rem !important;
+    padding-left: 1.7rem !important;
   }
-  .toastui-editor-contents ul li,
   .toastui-editor-contents ol li {
-    display: flex !important;
-    margin-bottom: 5px !important;
+    white-space: nowrap !important;
   }
 
   /* 코드 블록 */
