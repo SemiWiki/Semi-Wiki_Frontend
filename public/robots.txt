@@ -1,0 +1,15 @@
+# 네이버(Yeti / NaverBot 계열)만 허용, 루트 경로(/)만 허용, 그 외 전부 차단
+User-agent: Yeti
+Allow: /$
+Disallow: /
+
+User-agent: NaverBot
+Allow: /$
+Disallow: /
+
+User-agent: NaverBot-Image
+Allow: /$
+Disallow: /
+
+User-agent: *
+Disallow: /
