@@ -40,7 +40,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!sessionStorage.getItem("viewedAlerts")) {
+    if (
+      !localStorage.getItem("viewedAlerts") &&
+      localStorage.getItem("accessToken")
+    ) {
       showAlerts();
     }
   }, []);
