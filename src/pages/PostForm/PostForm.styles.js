@@ -135,9 +135,11 @@ export const GlobalEditorStyle = createGlobalStyle`
   .toastui-editor-contents h4,
   .toastui-editor-contents h5,
   .toastui-editor-contents h6,
-  .toastui-editor-contents p {
+  .toastui-editor-contents p,
+  .toastui-editor-contents strike {
     color: ${colors_dark.gray[100]} !important;
     font-family: "Pretendard";
+    font-size: 20px;
 
     margin: 0;
   }

@@ -34,7 +34,7 @@ function PostForm() {
   const navigate = useNavigate();
   const token = localStorage.getItem("accessToken");
   const accountId = localStorage.getItem("accountId");
-  const CONTAINS_FORBIDDEN_CHARS_REGEX = /[~!@#$%^&*()_+|<>?:{}\s]/;
+  const CONTAINS_FORBIDDEN_CHARS_REGEX = /[~!@#$%^&*()_+|<>?:{}]/;
 
   // 체크박스 변경 핸들러
   const handleCheckboxChange = useCallback(
@@ -96,7 +96,7 @@ function PostForm() {
       return;
     }
     if (CONTAINS_FORBIDDEN_CHARS_REGEX.test(title)) {
-      alert("제목에 특수문자 또는 공백이 포함되어 있습니다.");
+      alert("제목에 특수문자가 포함될 수 없습니다.");
       return;
     }
     setLoading(true);
@@ -125,8 +125,7 @@ function PostForm() {
         }
       );
 
-      const responseData = await response.json();
-      const responseMessage = responseData.message;
+      const responseMessage = await response.text();
 
       if (!response.ok) {
         switch (response.status) {
@@ -134,9 +133,7 @@ function PostForm() {
             if (responseMessage == "no title")
               throw new Error("제목을 입력해주세요.");
             if (responseMessage == "duplicate title")
-              throw new Error(
-                "동일한 제목의 게시글이 이미 존재합니다. 다른 제목으로 수정해 주세요."
-              );
+              throw new Error("동일한 제목의 게시글이 이미 존재합니다.");
             if (responseMessage == "there's no category")
               throw new Error("카테고리를 선택해주세요.");
             if (responseMessage == "over run category")

@@ -110,7 +110,7 @@ export const SubMenu = styled.div`
   visibility: ${({ isClick }) => (isClick ? `visible` : `hidden`)};
   transform: ${({ isClick }) =>
     isClick ? `translateX(0%)` : `translateX(-100%)`};
-  transition: transform 0.5s ease-in;
+  transition: transform 0.2s ease-in;
 `;
 
 export const SubCatagoryItem = styled.div`

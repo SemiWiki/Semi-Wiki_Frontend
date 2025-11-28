@@ -36,7 +36,7 @@ function PostEditForm() {
   const editorRef = useRef();
   const token = localStorage.getItem("accessToken");
   const navigate = useNavigate();
-  const CONTAINS_FORBIDDEN_CHARS_REGEX = /[~!@#$%^&*()_+|<>?:{}\s]/;
+  const CONTAINS_FORBIDDEN_CHARS_REGEX = /[~!@#$%^&*()_+|<>?:{}]/;
 
   useEffect(() => {
     if (!token) return;
@@ -152,11 +152,7 @@ function PostEditForm() {
       return;
     }
     if (CONTAINS_FORBIDDEN_CHARS_REGEX.test(title)) {
-      alert("제목에 특수문자 또는 공백이 포함되어 있습니다.");
-      return;
-    }
-    if (selectedCategories.length === 0) {
-      alert("카테고리를 선택해주세요.");
+      alert("제목에 특수문자가 포함될 수 없습니다.");
       return;
     }
     setLoading(true);
@@ -189,15 +185,15 @@ function PostEditForm() {
         }
       );
 
+      const responseMessage = await response.text();
+
       if (!response.ok) {
         switch (response.status) {
           case 400:
             if (responseMessage == "no title")
               throw new Error("제목을 입력해주세요.");
             if (responseMessage == "duplicate title")
-              throw new Error(
-                "동일한 제목의 게시글이 이미 존재합니다. 다른 제목으로 수정해 주세요."
-              );
+              throw new Error("동일한 제목의 게시글이 이미 존재합니다.");
             if (responseMessage == "there's no category")
               throw new Error("카테고리를 선택해주세요.");
             if (responseMessage == "over run category")
