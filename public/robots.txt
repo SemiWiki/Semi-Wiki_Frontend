@@ -1,15 +1,11 @@
-# 네이버(Yeti / NaverBot 계열)만 허용, 루트 경로(/)만 허용, 그 외 전부 차단
+# 기본: 모든 크롤러 차단
+User-agent: *
+Disallow: /
+
+# 네이버 검색 로봇(Yeti 계열)만 허용
 User-agent: Yeti
 Allow: /$
-Disallow: /
-
-User-agent: NaverBot
-Allow: /$
-Disallow: /
-
-User-agent: NaverBot-Image
-Allow: /$
-Disallow: /
-
-User-agent: *
+Allow: /favicon.ico
+Allow: /*.css$
+Allow: /*.js$
 Disallow: /
