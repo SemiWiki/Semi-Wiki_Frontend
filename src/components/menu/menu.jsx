@@ -27,7 +27,8 @@ function Menu({ isMenuOpen, toggleMenu, handleCategoryToggle }) {
       "프론트엔드",
       "백엔드",
       "안드로이드",
-      "IOS",
+      "iOS",
+      "플러터",
       "임베디드",
       "정보보안",
       "인공지능",
@@ -36,7 +37,7 @@ function Menu({ isMenuOpen, toggleMenu, handleCategoryToggle }) {
       "DevOps",
     ],
     동아리: ["전공동아리", "창체동아리", "자율동아리", "DMS"],
-    기타: ["학교", "기숙사", "기타"],
+    학교: ["학생", "선생님", "일반교과", "전공교과", "기숙사", "기타"],
   };
 
   const link = () => {
