@@ -113,6 +113,7 @@ function MyBoard() {
           <BoardList
             sort={activeFilter}
             page={currentPage}
+            setCurrentPage={setCurrentPage}
             pageSize={pageSize}
             token={token}
             selectedCategories={selectedCategories}
