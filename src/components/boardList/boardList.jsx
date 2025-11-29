@@ -19,6 +19,7 @@ function BoardList({
   searchTerm = "",
   accountId,
   setCurrentPage,
+  type,
 }) {
   const [items, setItems] = useState([]);
   const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE_URL;
@@ -41,7 +42,9 @@ function BoardList({
         query.append("limit", pageSize);
 
         const url = accountId
-          ? `${API_BASE}/user/${accountId}/list?${query.toString()}`
+          ? type == "my"
+            ? `${API_BASE}/user/${accountId}/list?${query.toString()}`
+            : `${API_BASE}/user/${accountId}/list/like?${query.toString()}`
           : `${API_BASE}/notice-board/list?${query.toString()}`;
 
         const res = await fetch(url, {
@@ -80,6 +83,8 @@ function BoardList({
     searchTerm,
     API_BASE,
     accountId,
+    setCurrentPage,
+    type,
   ]);
 
   return (

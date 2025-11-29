@@ -120,7 +120,7 @@ function MyBoard() {
             token={token}
             selectedCategories={selectedCategories}
             accountId={accountId}
-            setCurrentPage={setCurrentPage}
+            type="my"
           />
 
           <Pagination

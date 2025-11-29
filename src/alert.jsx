@@ -1,6 +1,4 @@
 /*
-  alert.json을 생성후 해당 파일을 public 폴더에 위치시켜야 합니다.
-  공지사항 데이터를 담고 있는 JSON 파일입니다.
   각 공지사항은 id, title, message, type 속성을 포함합니다.
   type 속성은 공지사항의 중요도를 나타내며, "normal", "urgent" 중 하나의 값을 가질 수 있습니다.
 
@@ -21,9 +19,13 @@
   ]
 */
 
-export async function showAlerts() {
+export async function showAlerts(token) {
+  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE_URL;
+
   try {
-    const res = await fetch("/alert.json");
+    const now = new Date().toLocaleString();
+    const res = await fetch(`${API_BASE}/notice`, { method: "GET" });
+
     const alerts = await res.json();
 
     if (!Array.isArray(alerts) || alerts.length === 0) return;
@@ -33,16 +35,19 @@ export async function showAlerts() {
 
     if (pendingAlerts.length === 0) return;
 
+    console.log(`[공지 조회 성공] 총 ${pendingAlerts.length}개, 시간=${now}`);
+    console.log("[서버 응답 JSON]", alerts);
+
     for (const alert of pendingAlerts) {
       await new Promise((resolve) => {
-        createAlertPopup(alert.title, alert.message, alert.type, resolve);
+        createAlertPopup(alert.title, alert.contents, alert.type, resolve);
       });
 
       viewed.push(alert.id);
       localStorage.setItem("viewedAlerts", JSON.stringify(viewed));
     }
   } catch (err) {
-    console.error("알림 로드 실패:", err);
+    console.error(`[공지 조회 오류] ${err.message}`);
   }
 }
 
