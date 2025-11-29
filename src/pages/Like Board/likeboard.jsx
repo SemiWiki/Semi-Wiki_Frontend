@@ -16,7 +16,7 @@ import Menu from "../../components/menu/menu.jsx";
 import { GlobalStyle } from "../Board/board.styles.js";
 import pen from "../../assets/pen.svg";
 
-function MyBoard() {
+function LikeBoard() {
   const [activeFilter, setActiveFilter] = useState("최신순");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -33,13 +33,13 @@ function MyBoard() {
   console.log("현재 저장된 토큰:", token);
   console.log("현재 accountId:", accountId);
 
-  const handleModifyClick = (accountId) => {
-    navigate(`/mypage/${accountId}/list`);
-  };
-
   const toggleMenu = useCallback(() => {
     setIsMenuOpen((prev) => !prev);
   }, []);
+
+  const handleModifyClick = (accountId) => {
+    navigate(`/like/${accountId}/list`);
+  };
 
   const handleCategoryToggle = (category) => {
     setSelectedCategories([category]);
@@ -94,7 +94,7 @@ function MyBoard() {
           handleCategoryToggle={handleCategoryToggle}
         />
         <BoardContainer>
-          <BoardTitle>내가 작성한 게시글</BoardTitle>
+          <BoardTitle>좋아요한 게시글</BoardTitle>
 
           <Boardfiler>
             {["최신순", "추천순"].map((filter) => (
@@ -134,4 +134,4 @@ function MyBoard() {
   );
 }
 
-export default MyBoard;
+export default LikeBoard;

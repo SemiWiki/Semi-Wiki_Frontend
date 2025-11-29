@@ -13,7 +13,7 @@ export const MenuContainer = styled.div`
   position: absolute;
   display: flex;
   width: 400px;
-  height: 650px;
+  height: 670px;
   margin-top: 40px;
   margin-right: 1000px;
 

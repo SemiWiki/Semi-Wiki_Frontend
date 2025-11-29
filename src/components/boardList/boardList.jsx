@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import {
   BoardListContainer,
   BoardListTitle,
@@ -32,7 +32,8 @@ function BoardList({
       try {
         const query = new URLSearchParams();
 
-        if (selectedCategories.length > 0) query.append("categories", selectedCategories[0]);
+        if (selectedCategories.length > 0)
+          query.append("categories", selectedCategories[0]);
         if (searchTerm) query.append("keyword", searchTerm);
 
         query.append("orderBy", sort === "최신순" ? "recent" : "like");
@@ -70,7 +71,16 @@ function BoardList({
     };
 
     fetchList();
-  }, [page, sort, pageSize, token, selectedCategories, searchTerm, API_BASE, accountId]);
+  }, [
+    page,
+    sort,
+    pageSize,
+    token,
+    selectedCategories,
+    searchTerm,
+    API_BASE,
+    accountId,
+  ]);
 
   return (
     <BoardListContainer>
