@@ -74,7 +74,7 @@ function Menu({ isMenuOpen, toggleMenu, handleCategoryToggle }) {
         // 로컬스토리지 전체 삭제
         localStorage.clear();
         document.cookie =
-          "accessTokenNumber=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+          "accessTokenNumber=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/";
         window.location.href = "/";
       }
     } else {
@@ -109,6 +109,9 @@ function Menu({ isMenuOpen, toggleMenu, handleCategoryToggle }) {
             <ServiceTitle Router>서비스</ServiceTitle>
             <ServiceItem onClick={() => navigate(`/mypage/${accountId}/list`)}>
               내가 작성한 게시글
+            </ServiceItem>
+            <ServiceItem onClick={() => navigate(`/like/${accountId}/list`)}>
+              좋아요한 게시글
             </ServiceItem>
             <ServiceItem onClick={() => navigate("/postform")}>
               새 게시글 작성
