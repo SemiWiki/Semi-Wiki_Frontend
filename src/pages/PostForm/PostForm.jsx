@@ -103,7 +103,7 @@ function PostForm() {
     setError("");
 
     const editorInstance = editorRef.current.getInstance();
-    const htmlBody = editorInstance.getHTML().replace(/></g, ">\n<");
+    const htmlBody = editorInstance.getHTML();
     const markdownBody = editorInstance.getMarkdown().trim();
 
     const postData = {
