@@ -63,7 +63,6 @@ export const Lovecount = styled.span`
   font-size: 24px;
 
   color: ${colors_dark.orange[100]};
-
   user-select: none;
 `;
 
@@ -171,15 +170,15 @@ export const TableOfContentscontainer = styled.div`
 //목차 제목
 export const TableOfContentsTitle = styled.h2`
   position: relative;
-  width: 32px;
+  width: 42px;
   height: 21px;
-  left: 16px;
+  left: 12px;
   top: 16px;
 
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 21px;
 
   color: ${colors_dark.gray[100]};
