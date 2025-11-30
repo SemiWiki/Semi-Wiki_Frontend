@@ -87,10 +87,10 @@ function App() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#f8d7da",
+          backgroundColor: "#353535",
           lineHeight: "1.5",
-          color: "#721c24",
-          fontSize: "2vw",
+          color: "#ffffff",
+          fontSize: "2.5vw",
           fontWeight: "bold",
           textAlign: "center",
         }}
