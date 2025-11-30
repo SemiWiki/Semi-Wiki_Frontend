@@ -61,7 +61,7 @@ function LikeBoard() {
           );
 
         const res = await fetch(
-          `${API_BASE}/user/${accountId}/count?${query.toString()}`,
+          `${API_BASE}/user/${accountId}/count/like?${query.toString()}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -120,6 +120,7 @@ function LikeBoard() {
             selectedCategories={selectedCategories}
             accountId={accountId}
             setCurrentPage={setCurrentPage}
+            type="like"
           />
 
           <Pagination
