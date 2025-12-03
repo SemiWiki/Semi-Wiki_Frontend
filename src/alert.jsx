@@ -1,8 +1,6 @@
 /*
-  alert.json을 생성후 해당 파일을 public 폴더에 위치시켜야 합니다.
-  공지사항 데이터를 담고 있는 JSON 파일입니다.
   각 공지사항은 id, title, message, type 속성을 포함합니다.
-  type 속성은 공지사항의 중요도를 나타내며, "normal", "urgent", "warning" 중 하나의 값을 가질 수 있습니다.
+  type 속성은 공지사항의 중요도를 나타내며, "normal", "urgent" 중 하나의 값을 가질 수 있습니다.
 
   예시
   [
@@ -21,9 +19,13 @@
   ]
 */
 
-export async function showAlerts() {
+export async function showAlerts(token) {
+  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE_URL;
+
   try {
-    const res = await fetch("/alert.json");
+    const now = new Date().toLocaleString();
+    const res = await fetch(`${API_BASE}/notice`, { method: "GET" });
+
     const alerts = await res.json();
 
     if (!Array.isArray(alerts) || alerts.length === 0) return;
@@ -33,16 +35,19 @@ export async function showAlerts() {
 
     if (pendingAlerts.length === 0) return;
 
+    console.log(`[공지 조회 성공] 총 ${pendingAlerts.length}개, 시간=${now}`);
+    console.log("[서버 응답 JSON]", alerts);
+
     for (const alert of pendingAlerts) {
       await new Promise((resolve) => {
-        createAlertPopup(alert.title, alert.message, alert.type, resolve);
+        createAlertPopup(alert.title, alert.contents, alert.type, resolve);
       });
 
       viewed.push(alert.id);
       localStorage.setItem("viewedAlerts", JSON.stringify(viewed));
     }
   } catch (err) {
-    console.error("알림 로드 실패:", err);
+    console.error(`[공지 조회 오류] ${err.message}`);
   }
 }
 
@@ -51,44 +56,56 @@ function createAlertPopup(title, message, type = "normal", onClose) {
 
   const typeStyles = {
     normal: {
-      buttonColor: "#007bff",
-      titleColor: "#0056b3",
+      buttonColor: "#FF9E3D",
+      hirightColor: "#FF9E3D",
     },
     urgent: {
-      buttonColor: "#d32f2f",
-      titleColor: "#b71c1c",
-    },
-    warning: {
-      buttonColor: "#ffa000",
-      titleColor: "#ff8f00",
+      buttonColor: "#FF9E3D",
+      hirightColor: "#FF9E3D",
     },
   };
 
-  const { buttonColor, titleColor } = typeStyles[type] || typeStyles.normal;
+  const { buttonColor, hirightColor } = typeStyles[type] || typeStyles.normal;
+
+  const formattedMessage = message.replace(
+    /<hiright>(.*?)<\/hiright>/gs,
+    `<span style="color: ${hirightColor}; font-weight: bold;">$1</span>`
+  );
 
   container.innerHTML = `
+  <div
+    style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    "
+  >
     <div
       style="
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         padding: 20px;
         min-width: 600px;
         min-height: 400px;
-        background: white;
-        border-radius: 10px;
+        background: #353535;
+        border-radius: 12px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        z-index: 10000;
         font-family: pretendard, sans-serif;
+        z-index: 10000;
       "
     >
       <h3 
         style="
           margin: 0 0 10px; 
           font-weight: bold; 
-          font-size: 24px;
-          color: ${titleColor};
+          font-size: 28px;
+          color: #FFFFFF;
         "
       >
         ${title}
@@ -96,14 +113,15 @@ function createAlertPopup(title, message, type = "normal", onClose) {
 
       <p 
         style="
-          margin: 30px 20px 20px; 
-          font-size: 18px; 
+          margin: 20px 20px 20px; 
+          font-size: 19px; 
           line-height: 1.5; 
           min-height: 300px;
           white-space: pre-line;
+          color: #FFFFFF;
         "
       >
-        ${message}
+        ${formattedMessage}
       </p>
 
       <button
@@ -122,6 +140,7 @@ function createAlertPopup(title, message, type = "normal", onClose) {
         확인
       </button>
     </div>
+  </div>
   `;
 
   document.body.appendChild(container);

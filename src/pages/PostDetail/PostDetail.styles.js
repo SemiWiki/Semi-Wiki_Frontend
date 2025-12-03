@@ -63,7 +63,6 @@ export const Lovecount = styled.span`
   font-size: 24px;
 
   color: ${colors_dark.orange[100]};
-
   user-select: none;
 `;
 
@@ -125,7 +124,7 @@ export const Categorycontainer = styled.div`
 
   border-radius: 24px;
 
-  cursor: pointer;
+  cursor: default;
 `;
 
 export const Categories = styled.div`
@@ -173,7 +172,7 @@ export const TableOfContentsTitle = styled.h2`
   position: relative;
   width: 42px;
   height: 21px;
-  left: 16px;
+  left: 12px;
   top: 16px;
 
   font-family: "Pretendard";

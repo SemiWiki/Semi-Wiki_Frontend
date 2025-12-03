@@ -10,7 +10,7 @@ export const TOCContents = styled.ul`
   font-size: 20px;
   line-height: 30px;
 
-  margin-top: 25px;
+  margin-top: 28px;
   margin-left: 30px;
 `;
 

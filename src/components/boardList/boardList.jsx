@@ -19,6 +19,7 @@ function BoardList({
   searchTerm = "",
   accountId,
   setCurrentPage,
+  type,
 }) {
   const [items, setItems] = useState([]);
   const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE_URL;
@@ -32,7 +33,8 @@ function BoardList({
       try {
         const query = new URLSearchParams();
 
-        if (selectedCategories.length > 0) query.append("categories", selectedCategories[0]);
+        if (selectedCategories.length > 0)
+          query.append("categories", selectedCategories[0]);
         if (searchTerm) query.append("keyword", searchTerm);
 
         query.append("orderBy", sort === "최신순" ? "recent" : "like");
@@ -40,7 +42,9 @@ function BoardList({
         query.append("limit", pageSize);
 
         const url = accountId
-          ? `${API_BASE}/user/${accountId}/list?${query.toString()}`
+          ? type == "my"
+            ? `${API_BASE}/user/${accountId}/list?${query.toString()}`
+            : `${API_BASE}/user/${accountId}/list/like?${query.toString()}`
           : `${API_BASE}/notice-board/list?${query.toString()}`;
 
         const res = await fetch(url, {
@@ -70,7 +74,18 @@ function BoardList({
     };
 
     fetchList();
-  }, [page, sort, pageSize, token, selectedCategories, searchTerm, API_BASE, accountId]);
+  }, [
+    page,
+    sort,
+    pageSize,
+    token,
+    selectedCategories,
+    searchTerm,
+    API_BASE,
+    accountId,
+    setCurrentPage,
+    type,
+  ]);
 
   return (
     <BoardListContainer>

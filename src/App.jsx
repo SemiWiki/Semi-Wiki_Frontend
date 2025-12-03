@@ -8,6 +8,7 @@ import PostDetail from "./pages/PostDetail/PostDetail.jsx";
 import PostForm from "./pages/PostForm/PostForm.jsx";
 import PostEditForm from "./pages/PostEditForm/PostEditForm.jsx";
 import MyBoard from "./pages/Write Board/writeboard.jsx";
+import LikeBoard from "./pages/Like Board/likeboard.jsx";
 import { createGlobalStyle } from "styled-components";
 import { GlobalEditorStyle } from "./pages/PostForm/PostForm.styles.js";
 import { showAlerts } from "./alert.jsx";
@@ -86,10 +87,10 @@ function App() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#f8d7da",
+          backgroundColor: "#353535",
           lineHeight: "1.5",
-          color: "#721c24",
-          fontSize: "2vw",
+          color: "#ffffff",
+          fontSize: "2.5vw",
           fontWeight: "bold",
           textAlign: "center",
         }}
@@ -126,6 +127,14 @@ function App() {
           element={
             <Layout searchTerm={searchTerm} setSearchTerm={setSearchTerm}>
               <MyBoard />
+            </Layout>
+          }
+        />
+        <Route
+          path="/like/:accountId/list"
+          element={
+            <Layout searchTerm={searchTerm} setSearchTerm={setSearchTerm}>
+              <LikeBoard />
             </Layout>
           }
         />
