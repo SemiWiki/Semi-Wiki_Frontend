@@ -103,8 +103,12 @@ function PostForm() {
     setError("");
 
     const editorInstance = editorRef.current.getInstance();
-    const htmlBody = editorInstance.getHTML();
-    const markdownBody = editorInstance.getMarkdown().trim();
+    let htmlBody = editorInstance.getHTML();
+
+    htmlBody = htmlBody.replace(
+      /<pre><code([\s\S]*?)<\/code><\/pre>/g,
+      (match) => match.replace(/\n{2,}/g, "\n")
+    );
 
     const postData = {
       title: title,
