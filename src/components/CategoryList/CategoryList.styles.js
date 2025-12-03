@@ -40,8 +40,7 @@ export const CheckboxLabel = styled.label`
   display: flex;
   align-items: center;
 
-  color: ${({ $check }) =>
-    $check ? colors_dark.gray[50] : colors_dark.orange[100]};
+  color: ${({ $check }) => ($check ? colors_dark.gray[50] : colors_dark.orange[100])};
 
   font-size: 18px;
   font-family: "Pretendard";
@@ -70,8 +69,7 @@ export const CategoryButton = styled.div`
 
   padding: 9px 6px;
 
-  background-color: ${({ $check }) =>
-    $check ? colors_dark.orange[100] : "transparent"};
+  background-color: ${({ $check }) => ($check ? colors_dark.orange[100] : "transparent")};
   border: 1px solid rgba(255, 158, 61, 0.5);
   border-radius: 8px;
 

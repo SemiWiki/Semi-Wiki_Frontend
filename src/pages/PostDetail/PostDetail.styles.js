@@ -18,8 +18,7 @@ export const Modify = styled.div`
   height: 60px;
 
   background: ${colors_dark.gray[650]};
-  box-shadow: 0px 4px 4px
-    rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
 
   cursor: pointer;
@@ -40,8 +39,7 @@ export const LoveLabel = styled.label`
   height: 60px;
 
   background: ${colors_dark.gray[650]};
-  box-shadow: 0px 4px 4px
-    rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
 
   img {
@@ -80,8 +78,7 @@ export const Topcontainer = styled.div`
   height: auto;
 
   background: ${colors_dark.gray[650]};
-  box-shadow: 0px 0px 4px 4px
-    rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
 `;
 
@@ -142,8 +139,7 @@ export const Categories = styled.div`
 //카테코리 태그
 export const CategoryTag = styled.span`
   padding: 10px 7px;
-  border: 1px solid
-    ${colors_dark.gray[100]};
+  border: 1px solid ${colors_dark.gray[100]};
   border-radius: 8px;
   font-size: 18px;
   color: ${colors_dark.gray[100]};
@@ -168,15 +164,14 @@ export const TableOfContentscontainer = styled.div`
   bottom: 180px;
 
   background: ${colors_dark.gray[650]};
-  box-shadow: 0px 0px 4px 4px
-    rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
 `;
 
 //목차 제목
 export const TableOfContentsTitle = styled.h2`
   position: relative;
-  width: 32px;
+  width: 42px;
   height: 21px;
   left: 16px;
   top: 16px;
@@ -184,7 +179,7 @@ export const TableOfContentsTitle = styled.h2`
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 21px;
 
   color: ${colors_dark.gray[100]};
@@ -204,8 +199,7 @@ export const Contentcontainer = styled.div`
   font-weight: 600;
 
   background: ${colors_dark.gray[650]};
-  box-shadow: 0px 0px 4px 4px
-    rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
 `;
 
