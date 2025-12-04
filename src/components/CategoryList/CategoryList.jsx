@@ -1,5 +1,4 @@
 import "../../styles/reset.css";
-import React, { useState } from "react";
 import x from "/src/assets/category/x.svg";
 import {
   CategoryListContainer,

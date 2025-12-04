@@ -31,7 +31,9 @@ function Board({ searchTerm }) {
   const token = localStorage.getItem("accessToken");
   const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE_URL;
 
-  localStorage.setItem("currentPage", currentPage);
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+  }, [currentPage]);
 
   const toggleMenu = useCallback(() => {
     setIsMenuOpen((prev) => !prev);
@@ -47,9 +49,8 @@ function Board({ searchTerm }) {
     const fetchTotalCount = async () => {
       try {
         const query = new URLSearchParams();
-        if (selectedCategories.length > 0)
-          query.append("categories", selectedCategories[0]);
-        console.log("카테고리", selectedCategories);
+        if (selectedCategories.length > 0) query.append("categories", selectedCategories[0]);
+        // console.log("카테고리", selectedCategories);
         if (searchTerm) query.append("keyword", searchTerm);
 
         const res = await fetch(
@@ -70,7 +71,7 @@ function Board({ searchTerm }) {
 
         const total = (await res.json()) || 0;
         setTotalPages(Math.max(1, Math.ceil(total / pageSize)));
-        console.log("Total count:", total);
+        // console.log("Total count:", total);
       } catch (err) {
         console.error(err);
       }

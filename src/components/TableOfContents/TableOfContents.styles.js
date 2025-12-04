@@ -8,7 +8,7 @@ export const TOCContents = styled.ul`
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
-  line-height: 24px;
+  line-height: 30px;
 
   margin-top: 28px;
   margin-left: 30px;

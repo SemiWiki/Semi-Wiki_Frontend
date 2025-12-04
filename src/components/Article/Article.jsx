@@ -1,5 +1,4 @@
 import { Viewer } from "@toast-ui/react-editor";
-import { useState } from "react";
 import {
   Number,
   Title,
@@ -12,7 +11,7 @@ import {
 import badWords from "./badWords.json";
 
 function Article({ Numberprop, Titleprop, childrenprop, subSections, depth = 0 }) {
-  console.log(subSections);
+  // console.log(subSections);
   let markdown = childrenprop;
 
   // 욕설 필터링
@@ -74,7 +73,7 @@ function Article({ Numberprop, Titleprop, childrenprop, subSections, depth = 0 }
                 Titleprop={sub.title}
                 childrenprop={sub.contents}
                 subSections={sub.children}
-                depth={depth + 1} 
+                depth={depth + 1}
               />
             ))}
           </>

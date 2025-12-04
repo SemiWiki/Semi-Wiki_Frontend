@@ -125,7 +125,7 @@ function PostDetail() {
       }
     };
     fetchPost();
-  }, [postId, API_BASE, token]);
+  }, [postId, token]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
