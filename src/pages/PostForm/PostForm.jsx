@@ -65,6 +65,13 @@ function PostForm() {
         return;
       }
 
+      if (typeof blob === "string") {
+        if (blob.startsWith("http://") || blob.startsWith("https://")) {
+          alert("외부 이미지 URL은 업로드할 수 없습니다.");
+          return;
+        }
+      }
+
       const formData = new FormData();
       formData.append("image", blob, blob.name || "upload.png");
 
@@ -107,7 +114,12 @@ function PostForm() {
 
     htmlBody = htmlBody.replace(
       /<pre><code([\s\S]*?)<\/code><\/pre>/g,
-      (match) => match.replace(/\n{2,}/g, "\n")
+      (match) => {
+        return match
+          .replace(/\r\n/g, "\n")
+          .replace(/\n{2,}/g, "\n")
+          .replace(/<br\s*\/?>/g, "");
+      }
     );
 
     const postData = {

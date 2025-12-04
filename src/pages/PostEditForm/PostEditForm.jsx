@@ -163,7 +163,12 @@ function PostEditForm() {
 
     htmlBody = htmlBody.replace(
       /<pre><code([\s\S]*?)<\/code><\/pre>/g,
-      (match) => match.replace(/\n{2,}/g, "\n")
+      (match) => {
+        return match
+          .replace(/\r\n/g, "\n")
+          .replace(/\n{2,}/g, "\n")
+          .replace(/<br\s*\/?>/g, "");
+      }
     );
 
     const updatedPostData = {
