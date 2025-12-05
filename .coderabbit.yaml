@@ -11,11 +11,6 @@ reviews:
   auto_assign_reviewers: true
   auto_review_on:
     - pull_request
-  path_filters:
-    exclude:
-      - "dist/**"
-      - "node_modules/**"
-      - "build/**"
 style:
   language: ko
   tone: friendly
