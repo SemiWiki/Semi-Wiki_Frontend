@@ -283,7 +283,6 @@ function PostEditForm() {
                     }}
                     previewStyle="none"
                     hideModeSwitch={true} // 모드 전환 버튼 숨기기
-                    useCommandShortcut={false} // 단축키 비활성화
                   />
                 </StyledBodyWrapper>
               </BodyContainer>
